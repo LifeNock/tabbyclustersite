@@ -1,11 +1,11 @@
 :root {
     --primary: #8b5cf6;       /* Violet */
     --accent: #06b6d4;        /* Cyan */
-    --bg: #0f172a;            /* Dark Slate */
-    --card-bg: rgba(30, 41, 59, 0.7);
-    --text-main: #f8fafc;
+    --bg: #0b0c15;            /* Deep Space */
+    --card-bg: rgba(20, 25, 40, 0.6);
+    --text-main: #ffffff;
     --text-muted: #94a3b8;
-    --border: rgba(255, 255, 255, 0.1);
+    --border: rgba(255, 255, 255, 0.08);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,6 +18,45 @@ body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
+}
+
+/* --- THE COOL BACKGROUNDS --- */
+
+/* 1. The Moving Gradient Blob */
+.bg-blob {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, rgba(6, 182, 212, 0.05) 30%, transparent 70%);
+    z-index: -2;
+    animation: rotateBlob 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotateBlob {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 2. Scanline Texture (CRT Monitor effect) */
+.scanlines {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
+    background-size: 100% 4px;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* 3. Particle Canvas */
+#particles-js {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
 }
 
 /* --- Navigation --- */
@@ -28,17 +67,19 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    backdrop-filter: blur(12px);
-    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(15px);
+    background: rgba(11, 12, 21, 0.7);
     border-bottom: 1px solid var(--border);
     z-index: 1000;
 }
 
 .logo {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 800;
-    letter-spacing: -0.05em;
-    color: white;
+    letter-spacing: -1px;
+    background: linear-gradient(90deg, #fff, var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .nav-links a {
@@ -48,19 +89,20 @@ nav {
     font-size: 0.9rem;
     font-weight: 500;
     transition: 0.3s ease;
+    position: relative;
 }
 
-.nav-links a:hover, .nav-links a.active { color: var(--primary); }
+.nav-links a:hover { color: white; text-shadow: 0 0 10px var(--primary); }
 
 /* --- Layout --- */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 120px 20px 60px;
+    padding: 140px 20px 60px;
 }
 
 .hero-section {
-    min-height: 80vh;
+    min-height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,89 +111,90 @@ nav {
 }
 
 h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-size: clamp(3rem, 8vw, 5.5rem);
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1;
     margin-bottom: 1.5rem;
-    background: linear-gradient(to right, #fff, #94a3b8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    letter-spacing: -2px;
+}
+
+.glow-text {
+    text-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
 }
 
 p.lead {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     color: var(--text-muted);
-    max-width: 600px;
-    margin-bottom: 2.5rem;
+    max-width: 650px;
+    margin-bottom: 3rem;
 }
 
 /* --- Buttons --- */
 .btn {
-    display: inline-block;
-    padding: 12px 32px;
-    border-radius: 8px;
+    padding: 14px 36px;
+    border-radius: 50px;
     text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: inline-block;
 }
 
 .btn-primary {
-    background: var(--primary);
-    color: white;
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    background: white;
+    color: black;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
 }
 
 .btn-outline {
+    background: rgba(255,255,255,0.05);
     border: 1px solid var(--border);
-    color: var(--text-main);
-    margin-left: 10px;
+    color: white;
+    backdrop-filter: blur(5px);
+    margin-left: 15px;
 }
 
-.btn-outline:hover { border-color: var(--primary); }
+.btn-outline:hover {
+    border-color: var(--primary);
+    background: rgba(139, 92, 246, 0.1);
+}
 
-/* --- Cards & Grid --- */
+/* --- Cards --- */
 .grid-3 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 
 .card {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    padding: 2rem;
-    border-radius: 16px;
-    transition: 0.3s;
+    padding: 2.5rem;
+    border-radius: 24px;
+    backdrop-filter: blur(20px);
+    /* 3D Tilt Setup */
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
 }
 
 .card:hover {
     border-color: var(--primary);
-    transform: translateY(-5px);
+    background: rgba(30, 41, 59, 0.8);
 }
 
-.card h3 { margin-bottom: 1rem; color: white; }
-.card p { color: var(--text-muted); font-size: 0.95rem; }
+.card h3 { font-size: 1.5rem; margin-bottom: 15px; color: white; }
+.card p { color: var(--text-muted); font-size: 1rem; }
 
-/* --- Particle Background --- */
-#particles-js {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1;
-    opacity: 0.6;
-}
-
-/* --- Footer --- */
 footer {
     text-align: center;
     padding: 4rem 0;
     color: var(--text-muted);
-    font-size: 0.875rem;
     border-top: 1px solid var(--border);
-    margin-top: 4rem;
+    margin-top: 6rem;
+    background: rgba(0,0,0,0.3);
 }
