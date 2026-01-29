@@ -3,59 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TabbyCluster | Homelab Hosting</title>
+    <title>TabbyCluster // Homelab</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="bg-blob"></div>   <div class="scanlines"></div> <div id="particles-js"></div> <nav>
-    <div class="logo">TabbyCluster <span style="color:var(--primary)">Lab</span></div>
-    <div class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="infrastructure.html">The Rig</a>
-        <a href="investors.html">Contribute</a>
-    </div>
-</nav>
+    <div class="cyber-grid"></div>
+    <div class="vignette"></div>
 
-<header class="container hero-section">
-    <div data-aos="zoom-out" data-aos-duration="1200">
-        <span style="color:var(--accent); font-weight:bold; letter-spacing:2px; font-size:0.8rem; text-transform:uppercase;">Status: Online</span>
-        <h1 class="glow-text">The Cloud <br>is Just My Basement.</h1>
-        <p class="lead">
-            Experience raw, unrestricted compute power. A decentralized homelab cluster built by friends, for friends.
-        </p>
-        <div style="margin-top: 30px;">
-            <a href="infrastructure.html" class="btn btn-primary">See The Rig</a>
-            <a href="investors.html" class="btn btn-outline">Join Network</a>
+    <nav>
+        <div class="logo">TABBY<span>CLUSTER</span>_</div>
+        <div class="nav-links">
+            <a href="infrastructure.html">SPECS</a>
+            <a href="investors.html">INVEST</a>
+            <a href="https://github.com" target="_blank">GITHUB</a>
+        </div>
+    </nav>
+
+    <div class="hero-wrapper">
+        <div class="hero-content">
+            <div style="color: var(--acid); font-family: 'JetBrains Mono'; margin-bottom: 10px; font-size: 0.9rem;">
+                <span class="status-dot"></span> SYSTEM_ONLINE // 99.9% UPTIME
+            </div>
+            
+            <h1 class="glitch" data-text="THE CLOUD IS JUST">THE CLOUD IS JUST</h1>
+            <h1 class="glitch" data-text="SOMEONE'S BASEMENT.">SOMEONE'S BASEMENT.</h1>
+
+            <p class="subtitle">
+                We aren't a corporation. We are three friends with a server rack next to a washing machine. 
+                Experience raw, unthrottled Linux power. 
+            </p>
+
+            <div class="btn-group">
+                <a href="#specs" class="btn btn-main">View The Rig</a>
+                <a href="investors.html" class="btn btn-outline">Join Network</a>
+            </div>
         </div>
     </div>
-</header>
 
-<section class="container">
-    <div class="grid-3">
-        <div class="card" data-aos="fade-up" data-aos-delay="100">
-            <h3 style="color:var(--primary)">// Root Access</h3>
-            <p>We don't hide the terminal. You get full SSH access to your container. Break it? We'll just re-image it.</p>
+    <section id="specs" class="section">
+        <div style="margin-bottom: 40px; border-bottom: 1px solid #222; padding-bottom: 10px;">
+            <h2 class="mono">root@tabby:~# cat features.txt</h2>
         </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="200">
-            <h3 style="color:var(--accent)">// Docker Ready</h3>
-            <p>Every node comes pre-loaded with Docker and Portainer. Deploy your stack in seconds, not hours.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3><span style="color:var(--neon)">></span> Sudo Access</h3>
+                <p>We don't lock you out. SSH in, install Docker, break the kernel. It's a sandbox, treat it like one.</p>
+            </div>
+            <div class="card">
+                <h3><span style="color:var(--neon)">></span> Consumer Silicon</h3>
+                <p>Enterprise gear is slow. We run overclocked Ryzen chips for single-core speeds that crush generic VPS providers.</p>
+            </div>
+            <div class="card">
+                <h3><span style="color:var(--neon)">></span> Community Owned</h3>
+                <p>No shareholders. If the server catches fire, we drive over and put it out. You can invest in hardware and own part of the stack.</p>
+            </div>
         </div>
-        <div class="card" data-aos="fade-up" data-aos-delay="300">
-            <h3 style="color:white">// No Limits</h3>
-            <p>No bandwidth caps. No port blocking. If you can host it in a homelab, you can host it here.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<footer>
-    <p>TabbyCluster Lab &copy; 2026. Hosted locally on Consumer Hardware.</p>
-</footer>
+    <footer>
+        <p class="mono">TabbyCluster // Built on Caffeine & Linux.</p>
+        <p>Raleigh, NC</p>
+    </footer>
 
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="js/main.js"></script>
-</body>
+    </body>
 </html>
